@@ -18,6 +18,10 @@ const userSchema = new Schema({
         trim: true,
         minLength: 3,
         required: true
+    },
+    stats: {
+        type: [Number],
+        default: [100, 80, 60]
     }
 }, {
     timestamps: true,
