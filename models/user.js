@@ -19,10 +19,22 @@ const userSchema = new Schema({
         minLength: 3,
         required: true
     },
-    stats: {
+    overall: {
         type: [Number],
-        default: [100, 80, 60]
-    }
+        default: [100, 20, 40, 80]
+    },
+    animals: {
+        type: [Number],
+        default: [100, 60, 60]
+    },
+    history: {
+        type: [Number],
+        default: [60, 20, 60]
+    },
+    sports: {
+        type: [Number],
+        default: [100, 0, 60]
+    },
 }, {
     timestamps: true,
     toJSON: {

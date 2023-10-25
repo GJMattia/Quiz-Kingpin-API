@@ -3,11 +3,13 @@ const Schema = mongoose.Schema
 
 
 const questionSchema = new Schema({
+    user: { type: Schema.Types.ObjectId, ref: 'user' },
     category: { type: String, required: true },
-    question: { type: String, required: true, minLength: 10, maxLength: 50 },
-    correct_answer: { type: String, required: true, minLength: 10, maxLength: 50 },
-    incorrect_answers: { type: [String], required: true, minLength: 3, maxLength: 50 }
-
+    question: { type: String, required: true, minLength: 1, maxLength: 50 },
+    correct_answer: { type: String, required: true, minLength: 1, maxLength: 50 },
+    incorrect_answers: { type: [String] },
+    correct: { type: Number, default: 0 },
+    incorrect: { type: Number, default: 0 }
 }, {
     timestamps: true
 });
