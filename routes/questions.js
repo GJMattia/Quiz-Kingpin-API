@@ -7,7 +7,9 @@ router.get('/', questionsCtrl.index);
 
 router.post('/', questionsCtrl.create);
 
+router.delete('/:questionID', questionsCtrl.delete);
 
+router.put('/:questionID', questionsCtrl.updateQuestion);
 
 
 module.exports = router;
