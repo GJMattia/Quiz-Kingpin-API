@@ -4,8 +4,26 @@ module.exports = {
     create,
     index,
     delete: deleteQuestion,
-    updateQuestion
+    updateQuestion,
+    getSet
 };
+
+async function getSet(req, res) {
+    try {
+        let category = req.params.category;
+        const userID = req.user._id;
+        const questions = await Question.aggregate([
+            { $match: { category: category } },
+            { $sample: { size: 5 } }
+        ]);
+
+        res.json(questions);
+
+    } catch (error) {
+        console.error('Error updating question', error);
+        res.status(500).json({ error: 'Failed to update question' });
+    }
+}
 
 async function updateQuestion(req, res) {
     try {

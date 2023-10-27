@@ -5,6 +5,8 @@ const questionsCtrl = require('../controllers/questions');
 
 router.get('/', questionsCtrl.index);
 
+router.get('/:category', questionsCtrl.getSet);
+
 router.post('/', questionsCtrl.create);
 
 router.delete('/:questionID', questionsCtrl.delete);
