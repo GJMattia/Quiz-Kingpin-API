@@ -18,23 +18,7 @@ const userSchema = new Schema({
         trim: true,
         minLength: 3,
         required: true
-    },
-    overall: {
-        type: [Number],
-        default: []
-    },
-    animals: {
-        type: [Number],
-        default: []
-    },
-    history: {
-        type: [Number],
-        default: []
-    },
-    sports: {
-        type: [Number],
-        default: []
-    },
+    }
 }, {
     timestamps: true,
     toJSON: {

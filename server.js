@@ -4,7 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 const userRouter = require('./routes/users')
 const questionsRouter = require('./routes/questions');
-const resultsRouter = require('./routes/results');
+const statsRouter = require('./routes/stats');
 
 const SERVERDEVPORT = 4741
 const CLIENTDEVPORT = 5173
@@ -37,7 +37,7 @@ const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 app.use('/questions', ensureLoggedIn, questionsRouter);
 
-app.use('/results', ensureLoggedIn, resultsRouter);
+app.use('/stats', ensureLoggedIn, statsRouter);
 
 
 

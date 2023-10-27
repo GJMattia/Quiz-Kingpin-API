@@ -1,7 +1,21 @@
 const User = require('../models/user');
+const Stat = require('../models/stat');
 
 module.exports = {
-    addExternalScore
+    addExternalScore,
+    createStatSheet
+};
+
+async function createStatSheet(req, res) {
+    try {
+        const userID = req.body.userID;
+
+
+        const newStat = await Stat.create({ user: userID });
+        res.json(newStat);
+    } catch (error) {
+        console.error('error creating sheet', error)
+    }
 };
 
 
