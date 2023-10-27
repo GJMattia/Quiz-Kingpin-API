@@ -21,19 +21,19 @@ const userSchema = new Schema({
     },
     overall: {
         type: [Number],
-        default: [100, 20, 40, 80]
+        default: []
     },
     animals: {
         type: [Number],
-        default: [100, 60, 60]
+        default: []
     },
     history: {
         type: [Number],
-        default: [60, 20, 60]
+        default: []
     },
     sports: {
         type: [Number],
-        default: [100, 0, 60]
+        default: []
     },
 }, {
     timestamps: true,
