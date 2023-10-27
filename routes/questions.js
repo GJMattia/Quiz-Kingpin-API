@@ -13,5 +13,9 @@ router.delete('/:questionID', questionsCtrl.delete);
 
 router.put('/:questionID', questionsCtrl.updateQuestion);
 
+router.put('/:questionID/correct', questionsCtrl.markQuestionCorrect);
+
+router.put('/:questionID/incorrect', questionsCtrl.markQuestionIncorrect);
+
 
 module.exports = router;

@@ -5,7 +5,33 @@ module.exports = {
     index,
     delete: deleteQuestion,
     updateQuestion,
-    getSet
+    getSet,
+    markQuestionCorrect,
+    markQuestionIncorrect
+};
+async function markQuestionIncorrect(req, res) {
+    try {
+        const questionID = req.params.questionID;
+        const question = await Question.findById(questionID);
+        question.correct = question.incorrect += 1;
+        await question.save();
+    } catch (error) {
+        console.error('Error updating question', error);
+        res.status(500).json({ error: 'Failed to update question' });
+    }
+};
+
+
+async function markQuestionCorrect(req, res) {
+    try {
+        const questionID = req.params.questionID;
+        const question = await Question.findById(questionID);
+        question.correct = question.correct += 1;
+        await question.save();
+    } catch (error) {
+        console.error('Error updating question', error);
+        res.status(500).json({ error: 'Failed to update question' });
+    }
 };
 
 async function getSet(req, res) {
