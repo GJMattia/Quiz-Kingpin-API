@@ -3,8 +3,19 @@ const Stat = require('../models/stat');
 
 module.exports = {
     addExternalScore,
-    createStatSheet
+    createStatSheet,
+    getAllStats
 };
+
+async function getAllStats(req, res) {
+    try {
+        const userID = req.user._id;
+        const stats = await Stat.findOne({ user: userID });
+        res.json(stats);
+    } catch (error) {
+        console.error('error creating sheet', error)
+    }
+}
 
 async function createStatSheet(req, res) {
     try {
@@ -24,11 +35,18 @@ async function addExternalScore(req, res) {
         const userID = req.params.userID;
         const category = req.body.category.toLowerCase();
         const score = req.body.score;
-        const user = await User.findById(userID);
-        user[category].push(score);
-        await user.save();
+        const stat = await Stat.findOne({ user: userID });
+        stat[category].push(score);
+        stat.overall.push(score);
+        await stat.save();
         res.status(200).json({ message: 'Score added successfully' });
+
     } catch (error) {
         console.error('error adding score', error);
     }
 };
+
+
+
+
+
