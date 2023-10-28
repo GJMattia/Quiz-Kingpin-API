@@ -9,6 +9,7 @@ module.exports = {
     markQuestionCorrect,
     markQuestionIncorrect
 };
+
 async function markQuestionIncorrect(req, res) {
     try {
         const questionID = req.params.questionID;
@@ -20,7 +21,6 @@ async function markQuestionIncorrect(req, res) {
         res.status(500).json({ error: 'Failed to update question' });
     }
 };
-
 
 async function markQuestionCorrect(req, res) {
     try {

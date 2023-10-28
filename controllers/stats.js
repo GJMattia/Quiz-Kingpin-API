@@ -4,10 +4,20 @@ const Stat = require('../models/stat');
 module.exports = {
     addExternalScore,
     createStatSheet,
+    getUserStats,
     getAllStats
 };
 
 async function getAllStats(req, res) {
+    try {
+        const stats = await Stat.find({}).populate('user', 'name');
+        res.json(stats);
+    } catch (error) {
+        console.error('error creating sheet', error)
+    }
+}
+
+async function getUserStats(req, res) {
     try {
         const userID = req.user._id;
         const stats = await Stat.findOne({ user: userID });

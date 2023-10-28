@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 
 const statSchema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'user' },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     overall: {
         type: [Number],
         default: []
