@@ -5,8 +5,20 @@ module.exports = {
     addExternalScore,
     createStatSheet,
     getUserStats,
-    getAllStats
+    getAllStats,
+    getSelectedStats
 };
+
+async function getSelectedStats(req, res) {
+    try {
+        const selectedID = req.params.selectedID;
+        const stats = await Stat.findOne({ user: selectedID }).populate('user', 'name');
+        res.json(stats);
+    } catch (error) {
+        console.error('error creating sheet', error)
+    }
+};
+
 
 async function getAllStats(req, res) {
     try {

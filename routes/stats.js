@@ -5,7 +5,9 @@ const statsCtrl = require('../controllers/stats');
 
 router.get('/', statsCtrl.getUserStats);
 
-router.get('/all', statsCtrl.getAllStats)
+router.get('/:selectedID/all', statsCtrl.getSelectedStats);
+
+router.get('/all', statsCtrl.getAllStats);
 
 router.post('/', statsCtrl.createStatSheet);
 
